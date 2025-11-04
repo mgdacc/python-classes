@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación Interactiva: Clases en Python</title>
+    <style>
+        /* === ESTILOS GLOBALES Y DE ESCRITORIO === */
+        body {
+            font-family: Arial, sans-serif; background-color: #f0f0f0; margin: 0;
+            padding: 40px; display: flex; justify-content: center; align-items: center;
+            min-height: 100vh; box-sizing: border-box; transition: padding 0.3s ease;
+        }
+
+        .slideshow-container { position: relative; width: 90%; max-width: 960px; }
+        
+        .slide {
+            display: none; background-color: #fff; border: 1px solid #ccc;
+            height: 540px; padding: 40px 60px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            flex-direction: column; justify-content: center; position: relative;
+            box-sizing: border-box;
+        }
+
+        .fade { animation-name: fade; animation-duration: 0.5s; }
+        @keyframes fade { from {opacity: .4} to {opacity: 1} }
+
+        .prev, .next {
+            cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%);
+            width: 50px; height: 50px; background-color: #cccccc; color: #333;
+            border-radius: 50%; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            display: flex; justify-content: center; align-items: center;
+            font-weight: bold; font-size: 24px; transition: all 0.3s ease;
+            user-select: none; z-index: 10;
+        }
+
+        .prev { left: -70px; }
+        .next { right: -70px; }
+        .prev:hover, .next:hover { background-color: #aaaaaa; }
+
+        .slide h1 { font-size: 3.5em; text-align: center; border-bottom: 4px solid #11a800; padding-bottom: 20px; color: #005A9C; }
+        .slide h2 { font-size: 2.8em; margin-top: 0; margin-bottom: 30px; text-align: center; color: #005A9C; }
+        .single-content { text-align: center; }
+        .single-content p { font-size: 1.5em; color: #444; }
+        .single-content pre { font-size: 1.2em; display: inline-block; text-align: left; max-width: 100%; }
+        pre { background-color: #2d3436; color: #fff; padding: 15px; border-radius: 5px; font-size: 1.1em; white-space: pre-wrap; }
+        .footer { position: absolute; bottom: 20px; right: 40px; font-size: 1em; color: #888; }
+
+        /* === MEDIA QUERIES === */
+        @media screen and (max-width: 768px) {
+            body { padding: 15px; }
+            .slideshow-container { width: 100%; padding-bottom: 75px; }
+            .slide { height: auto; min-height: 75vh; padding: 20px 25px; }
+            .prev, .next { top: auto; bottom: 15px; width: 45px; height: 45px; }
+            .prev { left: 50%; transform: translateX(-110%); }
+            .next { left: 50%; transform: translateX(10%); right: auto; }
+            .slide h1 { font-size: 2.2em; }
+            .slide h2 { font-size: 1.8em; }
+            .single-content p { font-size: 1.1em; }
+            .single-content pre { font-size: 1em; }
+            .footer { font-size: 0.8em; right: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slideshow-container">
+        
+        <div class="slide fade">
+            <h1>Programación Orientada a Objetos</h1>
+            <h2 style="color:#333; border:none;">Clases y Objetos</h2>
+            <div class="footer">1 / 15</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>¿Qué es una Clase?</h2>
+            <div class="single-content"><p>Una plantilla o un plano para crear objetos. Define atributos (datos) y métodos (comportamientos).</p></div>
+            <div class="footer">2 / 15</div>
+        </div>
+        
+        <div class="slide fade">
+            <h2>¿Qué es un Objeto?</h2>
+            <div class="single-content"><p>Una instancia de una clase. Es la "construcción" real creada a partir del "plano".</p></div>
+            <div class="footer">3 / 15</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>Definir una Clase: <code>class</code></h2>
+            <div class="single-content"><p>Se usa la palabra clave `class` seguida del nombre de la clase (por convención, en CamelCase).</p><pre><code>class Perro:
+    pass # 'pass' significa que no tiene contenido aún</code></pre></div>
+            <div class="footer">4 / 15</div>
+        </div>
+        
+        <div class="slide fade">
+            <h2>Crear un Objeto (Instancia)</h2>
+            <div class="single-content"><p>Se "llama" a la clase como si fuera una función para crear una nueva instancia.</p><pre><code>class Perro:
+    pass
+
+mi_perro = Perro()
+otro_perro = Perro()
+
+print(type(mi_perro)) # <class '__main__.Perro'></code></pre></div>
+            <div class="footer">5 / 15</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>El Constructor: <code>__init__</code></h2>
+            <div class="single-content"><p>Un método especial que se ejecuta automáticamente al crear un objeto. Se usa para inicializar los atributos.</p><pre><code>class Perro:
+    def __init__(self, nombre, raza):
+        self.nombre = nombre
+        self.raza = raza</code></pre></div>
+            <div class="footer">6 / 15</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>El Parámetro <code>self</code></h2>
+            <div class="single-content"><p>Representa la instancia del objeto en sí. Permite que cada objeto acceda a sus propios atributos y métodos.</p><pre><code># self.nombre se refiere al nombre del objeto específico
+self.nombre = nombre</code></pre></div>
+            <div class="footer">7 / 15</div>
+        </div>
+        
+        <div class="slide fade">
+            <h2>Atributos de Instancia</h2>
+            <div class="single-content"><p>Son las variables que pertenecen a cada objeto individual (ej. `nombre`, `raza`).</p><pre><code>fido = Perro("Fido", "Golden")
+buddy = Perro("Buddy", "Labrador")
+
+print(fido.nombre) # Fido
+print(buddy.nombre) # Buddy</code></pre></div>
+            <div class="footer">8 / 15</div>
+        </div>
+        
+        <div class="slide fade">
+            <h2>Métodos de Instancia</h2>
+            <div class="single-content"><p>Son las funciones que pertenecen a la clase y que operan sobre los datos del objeto (sus atributos).</p><pre><code>class Perro:
+    def __init__(self, nombre):
+        self.nombre = nombre
+        
+    def ladrar(self):
+        print(f"{self.nombre} dice: ¡Guau!")</code></pre></div>
+            <div class="footer">9 / 15</div>
+        </div>
+        
+        <div class="slide fade">
+            <h2>Llamar a un Método</h2>
+            <div class="single-content"><p>Se accede a los métodos de un objeto usando la notación de punto.</p><pre><code>fido = Perro("Fido")
+fido.ladrar() # Fido dice: ¡Guau!</code></pre></div>
+            <div class="footer">10 / 15</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>Herencia: Reutilizar Código</h2>
+            <div class="single-content"><p>Permite que una clase (hija) herede los atributos y métodos de otra clase (padre).</p></div>
+            <div class="footer">11 / 15</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>Clase Padre (Superclase)</h2>
+            <div class="single-content"><p>La clase de la que se hereda.</p><pre><code>class Animal:
+    def __init__(self, nombre):
+        self.nombre = nombre
+    
+    def comer(self):
+        print(f"{self.nombre} está comiendo.")</code></pre></div>
+            <div class="footer">12 / 15</div>
+        </div>
+        
+        <div class="slide fade">
+            <h2>Clase Hija (Subclase)</h2>
+            <div class="single-content"><p>La clase que hereda. Se especifica la clase padre entre paréntesis.</p><pre><code>class Perro(Animal): # Perro hereda de Animal
+    def ladrar(self):
+        print("¡Guau!")</code></pre></div>
+            <div class="footer">13 / 15</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>La Herencia en Acción</h2>
+            <div class="single-content"><p>El objeto `Perro` ahora tiene acceso a los métodos de `Animal` y de `Perro`.</p><pre><code>mi_perro = Perro("Fido")
+mi_perro.comer()  # Método heredado de Animal
+mi_perro.ladrar() # Método propio de Perro</code></pre></div>
+            <div class="footer">14 / 15</div>
+        </div>
+        
+        <div class="slide fade">
+            <h2>Sobrescribir Métodos</h2>
+            <div class="single-content"><p>Una clase hija puede redefinir un método de la clase padre para que se comporte de manera diferente.</p><pre><code>class Gato(Animal):
+    def comer(self): # Sobrescribimos el método comer
+        print(f"{self.nombre} está comiendo atún.")
+
+mi_gato = Gato("Misi")
+mi_gato.comer()</code></pre></div>
+            <div class="footer">15 / 15</div>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <script>
+        let slideIndex = 1; showSlides(slideIndex);
+        function plusSlides(n) { showSlides(slideIndex += n); }
+        function showSlides(n) {
+            let i, slides = document.getElementsByClassName("slide");
+            if (n > slides.length) { slideIndex = 1 } 
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i) { slides[i].style.display = "none"; }
+            slides[slideIndex - 1].style.display = "flex";
+        }
+    </script>
+
+</body>
+</html>
